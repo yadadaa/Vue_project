@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app1">
+    <blog-post  v-bind:post-font-size="postFontSize" @enlarge-text="enlargeText"></blog-post>
+  </div>
+
+    <!-- 导入开发者在线vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+  <script>
+    Vue.component('blog-post', {
+      props: ['postFontSize'],
+      template: `
+        <div class="blog-post" :style="{ fontSize: postFontSize + 'em' }">
+          <h3>{{postFontSize}}</h3>
+          <p>12345</p>
+          <button  @click="$emit('enlarge-text')">
+            Enlarge text
+          </button>
+         
+        </div>
+      ` 
+    })
+
+    let app = new Vue({
+      el:'#app1',
+      data:{
+        postFontSize: 1
+      } ,
+      methods: {
+        enlargeText() {
+        this.postFontSize += 0.1; // 每次点击增加字体大小
+    }
+  },
+    })
+  </script>
+
+  
+</body>
+</html>

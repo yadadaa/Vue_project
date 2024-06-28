@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- <script src="vue.js">
+      Vue.config.devtools = true;
+    </script> -->
+
+    <!-- 导入开发者在线vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+    <div id="app" >
+      {{message}}
+    </div>
+
+    <div id="app1">
+      <p v-if="seen">看见</p>
+    </div>
+    
+    <div id="app-4">
+      <ol>
+        <li v-for="todo in todos">
+          {{todo.text}}
+        </li>
+      </ol>
+    </div>
+
+    <div id="app-5">
+      <p>{{message}}</p>
+      <button v-on:click ="reverseMessage">反转消息</button>
+    </div>
+    
+
+    <!-- 双向绑定 -->
+     <div id="app-6">
+      <p>
+        {{message}}
+      </p>
+      <input v-model="message">
+     </div>
+
+     <!-- 自定义组件 -->
+      <div id="app-7">
+        <ol>
+          <todo-item 
+          v-for="item in groceryList"
+          v-bind:todo="item"
+          v-bind:key = "item.id"
+          ></todo-item>
+
+          
+        </ol>
+        <todoing-todo></todoing-todo>
+
+      </div>
+    
+
+      <!-- 数组更新检测 -->
+      <div id="example" >
+        <li v-for="item in items" v-bind:key="item.message">
+          {{ item.message }}
+        </li>
+      </div>
+
+    <script>
+      let app = new Vue({
+        el:'#app',
+        data:{
+          message:'Hello vue!'
+        }
+      })
+      
+      let app1 = new Vue({
+        el:'#app1',
+        data:{
+          seen :true
+        }
+      })
+
+      let app4 = new Vue({
+        el:'#app-4',
+        data:{
+          todos:[
+             {text :'一腚上岸'},
+             {text:'腚上岸'},
+             {text:'上岸'},
+             {text:'岸'}
+          ]
+        }
+      })
+
+      let app5 = new Vue({
+        el:'#app-5',
+        data:{
+          message:"Hello Vue.js"
+        },
+        methods:{
+          reverseMessage:function(){
+            this.message = this.message.split('').reverse().join('');
+          }
+        }
+      })
+
+      let app6 = new Vue({
+        el:"#app-6",
+        data:{
+          message:'hello vue!'
+        }
+      })
+
+      // 自定义组件创建
+
+      Vue.component('todoing-todo',{template:'<li>这是一个代办项目</li>'})
+
+      Vue.component('todo-item',{
+        props:['todo'],
+        template:'<li>{{todo.text}}</li>'
+      })
+      let app7 = new Vue({
+        el:'#app-7',
+        data:{
+          groceryList:[
+            {id:0,text:'蔬菜'},
+            {id:1,text:'奶酪'},
+            {id:2,text:'其他'}
+          ]
+        }
+      }) 
+
+
+      // 数组更新检测
+      let app8 = new Vue({
+        el:"#example",
+        data:{
+          items: [
+        { message: 'Foo' },
+        { message: 'Bar' }]
+        }
+      })
+    </script>
+
+
+</body>
+</html>
