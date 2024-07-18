@@ -20,3 +20,9 @@
 4.入口文件：index.html
 
 5.运行项目npm run dev
+
+6.安装插件：npm i vite-plugin-vue-setup-extend -D
+
+在vite.config.ts中引入插件
+
+![image-20240718131612522](./assets/image-20240718131612522.png)
