@@ -1,5 +1,8 @@
 1.使用vite创建vue
-  npm config set registry=https://registry.npmmirror.com
+  安装vite：npm config set registry=https://registry.npmmirror.com
+
+创建项目：npm create vue@latest
+
 2.选择预设
 ![image-20240716210230672](./assets/image-20240716210230672.png)
 
@@ -25,4 +28,4 @@
 
 在vite.config.ts中引入插件
 
-![image-20240718131612522](./assets/image-20240718131612522.png)
+![image-20240718131702486](./assets/image-20240718131702486.png)
