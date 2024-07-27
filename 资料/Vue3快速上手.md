@@ -1900,6 +1900,8 @@ export const useTalkStore = defineStore('talk',()=>{
 - 若 **父传子**：属性值是**非函数**。
 - 若 **子传父**：属性值是**函数**。
 
+![image-20240724154639417](./assets/image-20240724154639417.png)
+
 父组件：
 
 ```vue
@@ -1971,6 +1973,8 @@ export const useTalkStore = defineStore('talk',()=>{
    //子组件中，触发事件：
    this.$emit('send-toy', 具体数据)
    ```
+
+![image-20240724164527325](./assets/image-20240724164527325.png)
 
 ## 6.3. 【mitt】
 
@@ -2045,6 +2049,8 @@ function sendToy(){
 ```
 
 **注意这个重要的内置关系，总线依赖着这个内置关系**
+
+![image-20240725133413823](./assets/image-20240725133413823.png)
 
 ## 6.4.【v-model】
 
@@ -2282,7 +2288,7 @@ function sendToy(){
      // 注入数据
     let {money,updateMoney} = inject('moneyContext',{money:0,updateMoney:(x:number)=>{}})
      let car = inject('car')
-</script>
+   </script>
    ```
 
 
